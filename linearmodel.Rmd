@@ -41,3 +41,39 @@ basicNN <- ggplot(dataF,aes(y=SIMS,x=GRIP))
 ```{r}
 basicNN + geom_point()+ geom_smooth(method=lm)
 ```
+
+```{r}
+new <-data.frame(ARM=88,GRIP=94)
+predict.lm(model.1,new)
+predict(model.1,new,interval="prediction")
+```
+
+```{r}
+model.1 <- lm(SIMS~ARM,data=dataF)
+summary.lm(model.1)
+```
+
+```{r}
+new <- data.frame(ARM=88,GRIP=94)
+          predict.lm(model.2,new)
+predict(model.2,new,interval="prediction")
+```
+```{r}
+model.2 <- lm(SIMS~GRIP,data=dataF)
+summary.lm(model.2)
+``` 
+
+```{r}
+new <- data.frame(ARM=88,GRIP=94)
+predict.lm(model.3,new)
+predict(model.3,new,interval="prediction")
+```
+
+```{r}
+model.3 <- lm(SIMS~GRIP+ARM,data=dataF)
+summary.lm(model.3)
+``` 
+
+```{r}
+anova(model.1,model.3)
+```
